@@ -102,7 +102,7 @@ git checkout dubbo
 | Redis         | 5.0    | https://redis.io/download                                    |
 | Zipkin        | 2.12.9 | https://zipkin.io/ |
 | Elasticsearch | 6.2.2  | https://www.elastic.co/downloads                             |
-| MongoDb       | 4.2.5    | https://www.mongodb.com/download-center                      |
+| MongoDb       | 4.2.5    | https://www.mongodb.com/download-center                    |
 | RabbitMq      | 3.7.14 | http://www.rabbitmq.com/download.html                        |
 | nginx         | 1.10   | http://nginx.org/en/download.html                            |
 
@@ -127,12 +127,24 @@ git checkout dubbo
 
 ### 本地测试环境
 
-- 启动nacos  startup.cmd -m standalone（单机启动）    http://localhost:8848/nacos/   默认用户名、密码都是nacos
+- 启动nacos  当前目录下运行startup.cmd -m standalone（单机启动）    http://localhost:8848/nacos/   默认用户名、密码都是nacos
 
 - 把docs目录下的配置yaml文件打包好，导入到nacos的配置中心
 
-- 启动zipkin  java -jar zipkin-server-2.12.9-exec.jar   http://localhost:9411/zipkin/
+- 启动zipkin  当前目录下运行java -jar zipkin-server-2.12.9-exec.jar   http://localhost:9411/zipkin/
 
+- 注意nacos 与 spring cloud 和 spring-cloud-alibaba 和 springboot的版本兼容问题
+  参考：https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E
+
+
+- 网关mall-gateway项目模块，不要引入springboot-web依赖
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
 
 
 ## 许可证
